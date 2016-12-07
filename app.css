@@ -1,0 +1,37 @@
+html,body{
+    font-family: "Berlin Sans FB";
+    font-size: 14px;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+md-toolbar h3{
+    margin: auto;
+    font-weight: 500;
+    font-family: "Berlin Sans FB";
+    font-size: 150%;
+}
+md-list-item > button{
+    width: 100%;
+    text-align: left !important;
+}
+
+#content{
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+    color: #E91E63;
+    margin: 20px;
+    position: relative;
+}
+.option-name{
+    font-family: "Berlin Sans FB";
+    color: #E91E63;
+    font-size: 150%;
+    margin-left: 8%;
+    text-align: center;
+}

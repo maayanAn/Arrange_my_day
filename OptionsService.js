@@ -5,24 +5,54 @@
      angular.module('optionsInfo').service('optionsService', OptionsService);
 
      function OptionsService($q) {
-         var homePageContent = [
-
+         var appContent = [
+             {
+                 text: 'homePageContent.html,'
+             },
+             {
+                 text: 'appointmants.html'
+             },
+             {
+                 text: 'assignment.html'
+             },
+             {
+                 text: 'settings.html'
+             }
+         ];
+         var appIcons = [
+             {
+                 name: 'face'
+             },
+             {
+                 name: 'perm_contact_calendar'
+             },
+             {
+                 name: 'assignment'
+             },
+             {
+                 name: 'settings'
+             }
          ];
          var optionsInfo = [
              {
                  name: 'home page',
-                 avatar: '',
-                 content: homePageContent[0]
+                 materialIcon: appIcons[0],
+                 content: appContent[0]
              },
              {
                  name: 'appointmants',
-                 avatar: '',
-                 content: homePageContent[1]
+                 materialIcon: appIcons[1],
+                 content: appContent[1]
              },
              {
                  name: 'tasks',
-                 avatar: '',
-                 content: homePageContent[2]
+                 materialIcon: appIcons[2],
+                 content: appContent[2]
+             },
+             {
+                 name: 'settings',
+                 materialIcon: appIcons[3],
+                 content: appContent[3]
              }
          ];
 

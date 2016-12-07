@@ -12,7 +12,7 @@
         self.toggleList = toggleOptionsList;
 
         optionsService.loadAllOptions()
-            .than(setOption, error);
+            .then(setOption, error);
 
         function setOption(options) {
             self.options = [].concat(options);
@@ -30,7 +30,13 @@
         function selectOption(option) {
             self.selected = option;
             console.log('an option was chosen');
+
         }
+        
+        function getCurrentTime($scope) {
+            $scope.date = new Date();
+        }
+
     }
 
 })();

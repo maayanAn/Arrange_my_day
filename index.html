@@ -6,14 +6,36 @@
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <link rel="stylesheet" href="app.css"/>
 </head>
 <body ng-app="MyApp" layout="column" ng-controller="UserController as ul">
     <md-toolbar layout="row">
-        <md-button class="menu" hide-gt-sm>
-            <i class="material-icons">storage</i>
+        <md-button class="menu" ng-click="ul.toggleList()" hide-gt-sm>
+            <i class="material-icons">menu</i>
         </md-button>
         <h3>Arrange My Day</h3>
     </md-toolbar>
+
+    <div class="container" layout="row" flex>
+        <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
+            <md-list ng-click="ul.toggleList()">
+                <md-List-item ng-repeat="opt in ul.options">
+                    <md-button ng-click="ul.selectedOption(opt)">
+                        <i class="material-icons md-36">{{opt.materialIcon.name}}</i>
+                        <span class="option-name"> {{opt.name}}</span>
+                    </md-button>
+                </md-List-item>
+            </md-list>
+        </md-sidenav>
+        <md-content id="content" flex>
+            <div layout="row">
+                <i class="material-icons md-36">{{ul.selected.materialIcon.name}}</i>
+                <h2 class="option-name"> {{ul.selected.name}}</h2>
+            </div>
+
+        </md-content>
+    </div>
+
 <script src="node_modules/angular/angular.js"></script>
 <script src="node_modules/angular-animate/angular-animate.js"></script>
 <script src="node_modules/angular-aria/angular-aria.min.js"></script>
