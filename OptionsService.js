@@ -2,21 +2,22 @@
  * Created by Jbt on 12/6/2016.
  */
  (function () {
+     'use strict';
      angular.module('optionsInfo').service('optionsService', OptionsService);
 
      function OptionsService($q) {
          var appContent = [
              {
-                 text: 'homePageContent.html,'
+                 text: 'homePageContent'
              },
              {
-                 text: 'appointmants.html'
+                 text: 'appointmantsContent'
              },
              {
-                 text: 'assignment.html'
+                 text: 'tasksContent'
              },
              {
-                 text: 'settings.html'
+                 text: 'settingsContent'
              }
          ];
          var appIcons = [
@@ -35,7 +36,7 @@
          ];
          var optionsInfo = [
              {
-                 name: 'home page',
+                 name: 'homePage',
                  materialIcon: appIcons[0],
                  content: appContent[0]
              },

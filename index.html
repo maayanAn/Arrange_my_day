@@ -9,47 +9,81 @@
     <link rel="stylesheet" href="app.css"/>
 </head>
 <body ng-app="MyApp" layout="column" ng-controller="UserController as ul">
-    <md-toolbar layout="row">
-        <md-button class="menu" ng-click="ul.toggleList()" hide-gt-sm>
-            <i class="material-icons">menu</i>
-        </md-button>
-        <h3>Arrange My Day</h3>
-    </md-toolbar>
+<md-toolbar layout="row">
+    <md-button class="menu" ng-click="ul.toggleList()" hide-gt-sm>
+        <i class="material-icons">menu</i>
+    </md-button>
+    <h3>Arrange My Day</h3>
+</md-toolbar>
 
-    <div class="container" layout="row" flex>
-        <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
-            <md-list ng-click="ul.toggleList()">
-                <md-List-item ng-repeat="opt in ul.options">
-                    <md-button ng-click="ul.selectedOption(opt)">
+<div class="container" layout="row" flex>
+    <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
+        <md-list ng-click="ul.toggleList()">
+            <md-List-item ng-repeat="opt in ul.options">
+                <md-button ng-click="ul.selectedOption(opt)">
+                    <div ui-sref="{{opt.content.text}}" ui-sref-active="active">
                         <i class="material-icons md-36">{{opt.materialIcon.name}}</i>
                         <span class="option-name"> {{opt.name}}</span>
-                    </md-button>
-                </md-List-item>
-            </md-list>
-        </md-sidenav>
-        <md-content id="content" flex>
-            <div layout="row">
-                <i class="material-icons md-36">{{ul.selected.materialIcon.name}}</i>
-                <h2 class="option-name"> {{ul.selected.name}}</h2>
-            </div>
-
-        </md-content>
-    </div>
+                    </div>
+                </md-button>
+            </md-List-item>
+        </md-list>
+    </md-sidenav>
+    <md-content id="content" flex>
+        <div layout="row">
+            <i class="material-icons md-36">{{ul.selected.materialIcon.name}}</i>
+            <h2 class="option-name"> {{ul.selected.name}}</h2>
+        </div>
+        <ui-view></ui-view>
+    </md-content>
+</div>
 
 <script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="node_modules/angular-animate/angular-animate.js"></script>
 <script src="node_modules/angular-aria/angular-aria.min.js"></script>
 <script src="node_modules/angular-material/angular-material.js"></script>
-    <script src="OptionsInfo.js"></script>
-    <script src="UserController.js"></script>
-    <script src="OptionsService.js"></script>
+<script src="OptionsInfo.js"></script>
+<script src="UserController.js"></script>
+<script src="OptionsService.js"></script>
 <script>
-    angular.module('MyApp',['ngMaterial','optionsInfo'])
-        .config(function ($mdThemingProvider) {
+
+    angular.module('MyApp', ['ngMaterial', 'optionsInfo', 'ui.router'])
+        .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider) {
             $mdThemingProvider.theme('default')
                 .primaryPalette('pink')
                 .accentPalette('red');
-        })
+
+
+            var homePageState = {
+                name: 'homePageContent',
+                url: '/homePageContent',
+                templateUrl: './homePageContent.html'
+            }
+
+            var appointmentsState = {
+                name: 'appointmantsContent',
+                url: '/appointmantsContent',
+                templateUrl: './appointmantsContent.html'
+            }
+            var assignmentState = {
+                name: 'tasksContent',
+                url: '/tasksContent',
+                templateUrl: './tasksContent.html'
+            }
+            var settingsState = {
+                name: 'settingsContent',
+                url: '/settingsContent',
+                templateUrl: './settingsContent.html'
+            }
+            $urlRouterProvider.otherwise('/homePageContent.html');
+
+            $stateProvider.state(homePageState);
+            $stateProvider.state(appointmentsState);
+            $stateProvider.state(assignmentState);
+            $stateProvider.state(settingsState);
+        });
+
 </script>
 
 

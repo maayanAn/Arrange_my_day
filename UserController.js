@@ -33,10 +33,12 @@
 
         }
         
-        function getCurrentTime($scope) {
-            $scope.date = new Date();
+        function getCurrentTime() {
+            this.date = new Date();
+            console.log('yes');
         }
 
+        this.getCurrentTime = getCurrentTime;
     }
 
 })();
