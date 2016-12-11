@@ -1,0 +1,28 @@
+{
+  "name": "Arrange_my_day",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.5.9",
+    "angular-animate": "^1.5.9",
+    "angular-aria": "^1.5.9",
+    "angular-material": "^1.1.1",
+    "angular-ui-router": "^0.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maayanAn/Arrange_my_day.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maayanAn/Arrange_my_day/issues"
+  },
+  "homepage": "https://github.com/maayanAn/Arrange_my_day#readme"
+}
