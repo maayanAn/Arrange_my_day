@@ -50,6 +50,7 @@
 
     angular.module('MyApp', ['ngMaterial', 'optionsInfo', 'ui.router'])
         .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider) {
+            var appointmentsState;
             $mdThemingProvider.theme('default')
                 .primaryPalette('pink')
                 .accentPalette('red');
@@ -58,13 +59,27 @@
             var homePageState = {
                 name: 'homePageContent',
                 url: '/homePageContent',
-                templateUrl: './homePageContent.html'
+                templateUrl: './homePageContent.html',
+                controller: function(){
+                    this.myTime = function($scope){
+                        return new Date();
+                    };
+                },
+                controllerAs: 'gl'
             }
 
-            var appointmentsState = {
+            appointmentsState = {
                 name: 'appointmantsContent',
                 url: '/appointmantsContent',
-                templateUrl: './appointmantsContent.html'
+                templateUrl: './appointmantsContent.html',
+                controller: function ($scope, $http) {
+                    console.log("entered controller");
+                    $http.get("http://www.w3schools.com/angular/customers.php")
+                        .then(function (response) {
+                            $scope.names = response.data.records;
+                        });
+                },
+                controllerAs: 'cl'
             }
             var assignmentState = {
                 name: 'tasksContent',
@@ -80,6 +95,7 @@
 
             $stateProvider.state(homePageState);
             $stateProvider.state(appointmentsState);
+
             $stateProvider.state(assignmentState);
             $stateProvider.state(settingsState);
         });

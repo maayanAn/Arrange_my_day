@@ -3,25 +3,16 @@
 <head>
 
 </head>
-<body ng-app="App" ng-controller="UserController as gl">
+<body ng-app="myApp">
     <md-content>
         <h1>Hello,</h1>
             <h2>Wellcome to 'Arrange My Day' website!</h2>
         <label>
-            Today's date:
-            {{gl.getCurrentTime()}}
+            Today's date:  {{gl.myTime()| date:'yyyy-MM-dd'}}
+
         </label>
-        <!--<span ng-non-bindable>Today's date:-->
-        <!--<b ng-model="gl.name"></b></span>-->
+
     </md-content>
 
-<script>
-//    var app = angular.module("App", ['ngMaterial']);
-//app.controller("myCtrl", function($scope) {
-//        this.getDatetime = function($scope){
-//            return (new Date).toLocaleFormat("%A, %B %e, %Y");
-//        }
-//});
-</script>
 </body>
 </html>
